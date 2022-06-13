@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+    tools{
+        maven "maven3.8.5"
+    }
+    stages{
+        stage('CheckoutCode')
+        {
+            steps{
+                git branch: 'development', credentialsId: '1b431f0a-b970-4cd3-9d89-238a3338b748', url: 'https://github.com/vspl-devops/maven-web-application.git'
+            }
+        }
+        stage('BuildAndTest')
+        {
+            steps{
+                sh "mvn clean package sonar:sonar deploy"
+            }
+        }
+        stage('Deploy')
+        {
+            steps{
+                sshagent(['a9d6609e-e251-4b0c-ae12-d6a4817576f8']) {
+            sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.45.120:/opt/apache-tomcat-9.0.63/webapps"
+        }
+            }
+        }
+    }
+}
