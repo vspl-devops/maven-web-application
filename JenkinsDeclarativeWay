@@ -3,11 +3,6 @@ pipeline{
     tools{
         maven "maven3.8.5"
     }
-    parameters {
-  choice choices: ['development', 'qa', 'master', 'test'], description: 'select the branch name', name: 'BranchName'
-  }
-
-
     stages{
         stage('CheckoutCode')
         {
