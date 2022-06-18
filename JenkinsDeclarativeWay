@@ -5,7 +5,8 @@ pipeline{
     }
     parameters {
   choice choices: ['development', 'qa', 'master', 'test'], description: 'select the branch name', name: 'BranchName'
-}
+  }
+
 
     stages{
         stage('CheckoutCode')
