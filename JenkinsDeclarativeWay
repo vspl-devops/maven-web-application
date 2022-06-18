@@ -11,7 +11,7 @@ pipeline{
         stage('CheckoutCode')
         {
             steps{
-                git branch: 'development', credentialsId: '1b431f0a-b970-4cd3-9d89-238a3338b748', url: 'https://github.com/vspl-devops/maven-web-application.git'
+                git branch: "${params.BranchName}", credentialsId: '1b431f0a-b970-4cd3-9d89-238a3338b748', url: 'https://github.com/vspl-devops/maven-web-application.git'
             }
         }
         stage('BuildAndTest')
