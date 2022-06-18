@@ -22,7 +22,7 @@ echo "Build No is:  ${env.BUILD_NUMBER}"
     stage('DeployappIntoTomcatServer')
     {
         sshagent(['a9d6609e-e251-4b0c-ae12-d6a4817576f8']) {
-            sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.127.43.8:/opt/apache-tomcat-9.0.63/webapps"
+            sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.45.120:/opt/apache-tomcat-9.0.63/webapps"
         }
     }
 }
