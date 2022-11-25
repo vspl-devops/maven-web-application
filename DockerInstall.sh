@@ -1,11 +1,10 @@
 #!/bin/bash
 
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo apt update -y
 
-sudo dnf install docker-ce-3:18.09.1-3.el7 -y
+sudo apt install docker.io -y
 
-sudo systemctl enable docker
+sudo service docker start
 
-sudo systemctl start docker
+sudo usermod -aG docker ubuntu
 
-sudo usermod -aG docker ec2-use
