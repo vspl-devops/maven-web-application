@@ -24,7 +24,7 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: docker login
       run: |
-        docker login -u $DOCKER_USER -p $PASSWORD
+        docker login -u srihari325 -p 144E1a0325@
     - name: docker build
       run: |
         docker build -t srihari325/maven-web-application:4 .
